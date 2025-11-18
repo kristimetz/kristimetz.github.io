@@ -10,6 +10,22 @@
       { "name": "Uvinul T 150", "category": "UVB" },
       { "name": "Tinosorb M", "category": "broad-spectrum" }
     ],
+    "safety_scores": {
+      "rosacea": {
+        "stinging": 1,
+        "flushing": 2,
+        "barrier": 3
+      },
+      "acne": {
+        "comedogenicity": 1,
+        "fungal_acne": 0
+      },
+      "sensitive": {
+        "fragrance": "no",
+        "essential_oils": "no",
+        "surfactant_strength": "low"
+      }
+    },
     "ingredients": [
       "Water",
       "Butylene Glycol",
@@ -21,7 +37,6 @@
       "Oryza Sativa Extract",
       "Bifida Ferment Lysate"
     ],
-    "rosacea_safety": "maybe yes",
     "notes": "Very popular K-beauty sunscreen with high tolerability."
   },
 
@@ -35,6 +50,22 @@
       { "name": "Uvinul A Plus", "category": "UVA" },
       { "name": "Uvinul T 150", "category": "UVB" }
     ],
+    "safety_scores": {
+      "rosacea": {
+        "stinging": 1,
+        "flushing": 2,
+        "barrier": 3
+      },
+      "acne": {
+        "comedogenicity": 1,
+        "fungal_acne": 0
+      },
+      "sensitive": {
+        "fragrance": "no",
+        "essential_oils": "no",
+        "surfactant_strength": "low"
+      }
+    },
     "ingredients": [
       "Water",
       "Birch Juice",
@@ -44,7 +75,6 @@
       "Uvinul A Plus",
       "Uvinul T 150"
     ],
-    "rosacea_safety": "maybe yes",
     "notes": "Hydrating; good for dry and dehydrated skin."
   },
 
@@ -58,6 +88,22 @@
       { "name": "Zinc Oxide 9%", "category": "mineral" },
       { "name": "Octinoxate 7.5%", "category": "chemical UVB" }
     ],
+    "safety_scores": {
+      "rosacea": {
+        "stinging": 1,
+        "flushing": 2,
+        "barrier": 3
+      },
+      "acne": {
+        "comedogenicity": 1,
+        "fungal_acne": 0
+      },
+      "sensitive": {
+        "fragrance": "no",
+        "essential_oils": "no",
+        "surfactant_strength": "low"
+      }
+    },
     "ingredients": [
       "Zinc Oxide",
       "Octinoxate",
@@ -66,8 +112,6 @@
       "Tocopheryl Acetate",
       "Lactic Acid"
     ],
-    "rosacea_safety": "yes",
     "notes": "Extremely popular for rosacea and acne-prone skin."
   }
 ]
-
