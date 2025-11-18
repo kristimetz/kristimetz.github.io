@@ -10,6 +10,7 @@
       { "name": "Uvinul T 150", "category": "UVB" },
       { "name": "Tinosorb M", "category": "broad-spectrum" }
     ],
+    "barrier_support":"5"
     "safety_scores": {
       "rosacea": {
         "stinging": 1,
