@@ -21,19 +21,50 @@ function displaySunscreens(list) {
     const div = document.createElement("div");
     div.className = "sunscreen-card";
 
+    // Ingredient links
     const ingredientLinks = item.ingredients
       .map(ing => formatIngredientLink(ing))
       .join(", ");
 
+    // Safety score shortcuts
+    const ss = item.safety_scores ?? {};
+    const rosacea = ss.rosacea ?? {};
+    const acne = ss.acne ?? {};
+    const sensitive = ss.sensitive ?? {};
+
     div.innerHTML = `
       <h2>${item.brand} – ${item.product}</h2>
 
-      <p><strong>Type:</strong> ${item.type}</p>
+      <p><strong>Type:</strong> ${item.type ?? "Unknown"}</p>
       <p><strong>Niacinamide?</strong> ${item.niacinamide ?? "Unknown"}</p>
-      <p><strong>Ingredients:</strong> ${ingredientLinks}</p>
+      <p><strong>Barrier Support:</strong> ${item.barrier_support ?? "Unknown"}</p>
 
-      <p><strong>Rosacea Safety:</strong> ${item.rosacea_safety}</p>
-      <p><em>${item.notes}</em></p>
+      <details>
+        <summary><strong>Safety Scores</strong></summary>
+        <p><strong>Rosacea:</strong><br>
+          Stinging: ${rosacea.stinging ?? "Unknown"}<br>
+          Flushing: ${rosacea.flushing ?? "Unknown"}<br>
+          Barrier Impact: ${rosacea.barrier ?? "Unknown"}
+        </p>
+
+        <p><strong>Acne:</strong><br>
+          Comedogenicity: ${acne.comedogenicity ?? "Unknown"}<br>
+          Fungal Acne: ${acne.fungal_acne ?? "Unknown"}
+        </p>
+
+        <p><strong>Sensitive Skin:</strong><br>
+          Fragrance: ${sensitive.fragrance ?? "Unknown"}<br>
+          Essential Oils: ${sensitive.essential_oils ?? "Unknown"}<br>
+          Surfactant Strength: ${sensitive.surfactant_strength ?? "Unknown"}
+        </p>
+      </details>
+
+      <details>
+        <summary><strong>Ingredients</strong></summary>
+        <p>${ingredientLinks}</p>
+      </details>
+
+      <p><em>${item.notes ?? ""}</em></p>
     `;
 
     container.appendChild(div);
