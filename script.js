@@ -35,27 +35,37 @@ function displaySunscreens(list) {
     div.innerHTML = `
       <h2>${item.brand} – ${item.product}</h2>
 
+      <p><strong>SPF:</strong> ${item.spf ?? "Unknown"}</p>
+      <p><strong>PA Rating:</strong> ${item.pa ?? "Unknown"}</p>
       <p><strong>Type:</strong> ${item.type ?? "Unknown"}</p>
+      <p><strong>Texture/Finish:</strong> ${item.texture_finish ?? "Unknown"}</p>
+      <p><strong>Country:</strong> ${item.country ?? "Unknown"}</p>
+
       <p><strong>Niacinamide?</strong> ${item.niacinamide ?? "Unknown"}</p>
       <p><strong>Barrier Support:</strong> ${item.barrier_support ?? "Unknown"}</p>
+      <p><strong>Fragrance:</strong> ${item.fragrance ?? "Unknown"}</p>
+      <p><strong>White Cast:</strong> ${item.white_cast ?? "Unknown"}</p>
+      <p><strong>Visible Light Protection:</strong> ${item.visible_light_protection ?? "Unknown"}</p>
+      <p><strong>Water Resistant:</strong> ${item.water_resistant ?? "Unknown"}</p>
 
       <details>
         <summary><strong>Safety Scores</strong></summary>
+
         <p><strong>Rosacea:</strong><br>
-          Stinging: ${rosacea.stinging ?? "Unknown"}<br>
-          Flushing: ${rosacea.flushing ?? "Unknown"}<br>
-          Barrier Impact: ${rosacea.barrier ?? "Unknown"}
+          • Stinging: ${rosacea.stinging ?? "Unknown"}<br>
+          • Flushing: ${rosacea.flushing ?? "Unknown"}<br>
+          • Barrier Impact: ${rosacea.barrier ?? "Unknown"}
         </p>
 
         <p><strong>Acne:</strong><br>
-          Comedogenicity: ${acne.comedogenicity ?? "Unknown"}<br>
-          Fungal Acne: ${acne.fungal_acne ?? "Unknown"}
+          • Comedogenicity: ${acne.comedogenicity ?? "Unknown"}<br>
+          • Fungal Acne: ${acne.fungal_acne ?? "Unknown"}
         </p>
 
         <p><strong>Sensitive Skin:</strong><br>
-          Fragrance: ${sensitive.fragrance ?? "Unknown"}<br>
-          Essential Oils: ${sensitive.essential_oils ?? "Unknown"}<br>
-          Surfactant Strength: ${sensitive.surfactant_strength ?? "Unknown"}
+          • Fragrance: ${sensitive.fragrance ?? "Unknown"}<br>
+          • Essential Oils: ${sensitive.essential_oils ?? "Unknown"}<br>
+          • Surfactant Strength: ${sensitive.surfactant_strength ?? "Unknown"}
         </p>
       </details>
 
