@@ -5,12 +5,24 @@
     "product": "Relief Sun: Rice + Probiotics",
     "niacinamide": "Yes",
     "type": "chemical",
+
+    "spf": 50,
+    "pa": "PA++++",
+    "visible_light_protection": "low",
+    "water_resistant": "none",
+    "texture_finish": "natural-dewy",
+    "white_cast": "none",
+    "country": "Korea",
+    "fragrance": "none",
+
     "filters": [
       { "name": "Uvinul A Plus", "category": "UVA" },
       { "name": "Uvinul T 150", "category": "UVB" },
       { "name": "Tinosorb M", "category": "broad-spectrum" }
     ],
-    "barrier_support":"5",
+
+    "barrier_support": "5",
+
     "safety_scores": {
       "rosacea": {
         "stinging": 1,
@@ -27,6 +39,7 @@
         "surfactant_strength": "low"
       }
     },
+
     "ingredients": [
       "Water",
       "Butylene Glycol",
@@ -38,6 +51,7 @@
       "Oryza Sativa Extract",
       "Bifida Ferment Lysate"
     ],
+
     "notes": "Very popular K-beauty sunscreen with high tolerability."
   },
 
@@ -47,10 +61,21 @@
     "product": "Birch Juice Moisturizing Sunscreen",
     "niacinamide": "Yes",
     "type": "chemical",
+
+    "spf": 50,
+    "pa": "PA++++",
+    "visible_light_protection": "low",
+    "water_resistant": "none",
+    "texture_finish": "hydrating-dewy",
+    "white_cast": "none",
+    "country": "Korea",
+    "fragrance": "none",
+
     "filters": [
       { "name": "Uvinul A Plus", "category": "UVA" },
       { "name": "Uvinul T 150", "category": "UVB" }
     ],
+
     "safety_scores": {
       "rosacea": {
         "stinging": 1,
@@ -67,6 +92,7 @@
         "surfactant_strength": "low"
       }
     },
+
     "ingredients": [
       "Water",
       "Birch Juice",
@@ -76,6 +102,7 @@
       "Uvinul A Plus",
       "Uvinul T 150"
     ],
+
     "notes": "Hydrating; good for dry and dehydrated skin."
   },
 
@@ -85,10 +112,21 @@
     "product": "UV Clear Broad-Spectrum SPF 46",
     "niacinamide": "Yes",
     "type": "hybrid",
+
+    "spf": 46,
+    "pa": "PA+++",
+    "visible_light_protection": "minimal",
+    "water_resistant": "none",
+    "texture_finish": "lightweight",
+    "white_cast": "none",
+    "country": "USA",
+    "fragrance": "none",
+
     "filters": [
       { "name": "Zinc Oxide 9%", "category": "mineral" },
       { "name": "Octinoxate 7.5%", "category": "chemical UVB" }
     ],
+
     "safety_scores": {
       "rosacea": {
         "stinging": 1,
@@ -105,6 +143,7 @@
         "surfactant_strength": "low"
       }
     },
+
     "ingredients": [
       "Zinc Oxide",
       "Octinoxate",
@@ -113,6 +152,7 @@
       "Tocopheryl Acetate",
       "Lactic Acid"
     ],
+
     "notes": "Extremely popular for rosacea and acne-prone skin."
   }
 ]
