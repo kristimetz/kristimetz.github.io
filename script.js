@@ -1,3 +1,40 @@
+//
+//  LOAD SUNSCREENS
+//
+async function loadSunscreens() {
+  try {
+    console.log("Attempting to load sunscreens.json...");
+    const response = await fetch("data/sunscreens.json");
+
+    if (!response.ok) {
+      console.error("Failed to load sunscreens.json:", response.status, response.statusText);
+      return [];
+    }
+
+    const sunscreens = await response.json();
+    console.log("Loaded sunscreens:", sunscreens);
+    return sunscreens;
+  } catch (err) {
+    console.error("Fetch error:", err);
+    return [];
+  }
+}
+
+//
+//  FORMAT INGREDIENT LINKS
+//
+function formatIngredientLink(ing) {
+  const urlSlug = ing
+    .toLowerCase()
+    .replace(/[^a-z0-9 ]/g, "")
+    .replace(/\s+/g, "-");
+
+  return `<a href="https://incidecoder.com/ingredients/${urlSlug}" target="_blank">${ing}</a>`;
+}
+
+//
+//  DISPLAY SUNSCREENS
+//
 function displaySunscreens(list) {
   const container = document.getElementById("results");
   container.innerHTML = "";
@@ -8,8 +45,8 @@ function displaySunscreens(list) {
 
     // Ingredient links
     const ingredientLinks = item.ingredients
-      .map(ing => formatIngredientLink(ing))
-      .join(", ");
+      ?.map(ing => formatIngredientLink(ing))
+      .join(", ") ?? "No ingredient list provided.";
 
     // Safety score shortcuts
     const ss = item.safety_scores ?? {};
@@ -17,7 +54,7 @@ function displaySunscreens(list) {
     const acne = ss.acne ?? {};
     const sensitive = ss.sensitive ?? {};
 
-    // 🔥 DYNAMIC REPORT ISSUE LINK (the new part)
+    // DYNAMIC REPORT LINK
     const reportLink = `https://github.com/kristimetz/kristimetz.github.io/issues/new?template=sunscreen-issue.md&title=Issue%20with%20sunscreen%3A%20${item.id}&body=**Sunscreen%20ID%3A**%20${item.id}`;
 
     div.innerHTML = `
@@ -62,7 +99,6 @@ function displaySunscreens(list) {
         <p>${ingredientLinks}</p>
       </details>
 
-      <!-- 🔥 The clickable Issue Report link -->
       <p style="margin-top: 10px;">
         <a href="${reportLink}" target="_blank" rel="noopener noreferrer">
           📣 Report an Issue with This Sunscreen
@@ -75,3 +111,31 @@ function displaySunscreens(list) {
     container.appendChild(div);
   });
 }
+
+//
+//  SEARCH FUNCTION
+//
+function setupSearch(all) {
+  const search = document.getElementById("search");
+
+  search.addEventListener("input", () => {
+    const term = search.value.toLowerCase();
+
+    const filtered = all.filter(item =>
+      item.brand.toLowerCase().includes(term) ||
+      item.product.toLowerCase().includes(term) ||
+      item.ingredients?.some(ing => ing.toLowerCase().includes(term))
+    );
+
+    displaySunscreens(filtered);
+  });
+}
+
+//
+//  INITIALIZE PAGE
+//
+loadSunscreens().then(all => {
+  console.log("Initializing page with:", all);
+  displaySunscreens(all);
+  setupSearch(all);
+});
