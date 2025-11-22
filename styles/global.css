@@ -58,14 +58,25 @@ body {
   color: #444;
 }
 
+/* ⭐ GLOBAL LINK COLORS (Blue Everywhere) ⭐ */
+a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #004a99;
+}
+
+/* Remove old pink link styling */
 .sunscreen-card a {
-  color: #cc6688;
-  text-decoration: none;
+  color: inherit; /* inherits global blue */
+  text-decoration: inherit;
 }
 
 .sunscreen-card a:hover {
+  color: inherit;
   text-decoration: underline;
-  color: #b34f73;
 }
 
 @media (max-width: 600px) {
