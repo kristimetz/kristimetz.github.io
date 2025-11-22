@@ -58,8 +58,14 @@
         return;
       }
 
-      document.getElementById("title").innerText =
-        item.brand ? `${item.brand} – ${item.product}` : item.product;
+      const spfText = item.spf ? ` SPF ${item.spf}` : "";
+const paText = item.pa ? ` ${item.pa}` : "";
+
+document.getElementById("title").innerText =
+  (item.brand ? `${item.brand} ${item.product}` : item.product)
+  + spfText
+  + paText;
+
 
       const ingredientLinks = item.ingredients
         ?.map(ing => formatIngredientLink(ing))
