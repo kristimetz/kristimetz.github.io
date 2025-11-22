@@ -139,11 +139,14 @@ function displaySunscreens(list) {
         <p>${ingredientLinks}</p>
       </details>
 
-      <p style="margin-top: 10px;">
-        <a href="${reportLink}" target="_blank" rel="noopener noreferrer">
-          📣 Report an Issue with This Sunscreen
-        </a>
-      </p>
+<p style="margin-top: 10px;">
+  <a href="${reportLink}"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="report-link">
+    📣 Report an Issue with This Sunscreen
+  </a>
+</p>
 
       <p><em>${item.notes ?? ""}</em></p>
     `;
