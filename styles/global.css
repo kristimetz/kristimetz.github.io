@@ -1,0 +1,80 @@
+/* Global Site Styling */
+body {
+  font-family: sans-serif;
+  max-width: 900px;
+  margin: 40px auto;
+  line-height: 1.5;
+}
+
+.site-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 🌸 K-BEAUTY AESTHETIC CARD STYLE */
+.sunscreen-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  margin: 22px 0;
+  box-shadow: 0 4px 16px rgba(255, 182, 193, 0.15),
+              0 2px 8px rgba(170, 170, 170, 0.10);
+  border: 1px solid rgba(255, 192, 203, 0.30);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.sunscreen-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 22px rgba(255, 182, 193, 0.25),
+              0 3px 12px rgba(150, 150, 150, 0.12);
+}
+
+.sunscreen-card h2, 
+.sunscreen-card h3 {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 1.45rem;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #333;
+  letter-spacing: 0.4px;
+}
+
+.sunscreen-card strong {
+  color: #555;
+}
+
+.sunscreen-card details {
+  margin-top: 12px;
+  background: rgba(255, 240, 245, 0.35);
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 192, 203, 0.25);
+}
+
+.sunscreen-card summary {
+  font-weight: bold;
+  cursor: pointer;
+  color: #444;
+}
+
+.sunscreen-card a {
+  color: #cc6688;
+  text-decoration: none;
+}
+
+.sunscreen-card a:hover {
+  text-decoration: underline;
+  color: #b34f73;
+}
+
+@media (max-width: 600px) {
+  .sunscreen-card {
+    padding: 20px;
+  }
+
+  .sunscreen-card h2,
+  .sunscreen-card h3 {
+    font-size: 1.3rem;
+  }
+}
