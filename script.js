@@ -64,7 +64,7 @@ function displaySunscreens(list) {
     const reportLink = `https://github.com/kristimetz/kristimetz.github.io/issues/new?template=sunscreen-issue.md&title=Issue%20with%20sunscreen%3A%20${item.id}&body=**Sunscreen%20ID%3A**%20${item.id}`;
 
     div.innerHTML = `
-      <h2>${item.brand} – ${item.product}</h2>
+      <h2>${item.product}</h2>
 
       <p><strong>SPF:</strong> ${item.spf ?? "Unknown"}</p>
       <p><strong>PA Rating:</strong> ${item.pa ?? "Unknown"}</p>
