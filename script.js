@@ -155,6 +155,9 @@ function displaySunscreens(list) {
 //
 //  DISPLAY SUNSCREENS WITH BRAND (All-Sunscreens Page)
 //
+//
+//  DISPLAY SUNSCREENS WITH BRAND (All-Sunscreens Page)
+//
 function displaySunscreensWithBrand(list) {
   if (!list) return;
 
@@ -164,12 +167,22 @@ function displaySunscreensWithBrand(list) {
   container.innerHTML = "";
 
   list.forEach(item => {
-    const brandTitle = item.brand ? `<h3>${item.brand} – ${item.product}</h3>` : `<h3>${item.product}</h3>`;
+    const brandTitle = item.brand
+      ? `${item.brand} – ${item.product}`
+      : item.product;
 
     const div = document.createElement("div");
     div.className = "sunscreen-card";
 
-    div.innerHTML = brandTitle;
+    // ★ Make the title clickable ★
+    div.innerHTML = `
+      <h3>
+        <a href="sunscreen.html?id=${item.id}">
+          ${brandTitle}
+        </a>
+      </h3>
+    `;
+
     container.appendChild(div);
   });
 }
