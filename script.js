@@ -170,9 +170,16 @@ function displaySunscreensWithBrand(list) {
   container.innerHTML = "";
 
   list.forEach(item => {
-    const brandTitle = item.brand
-      ? `${item.brand} – ${item.product}`
-      : item.product;
+let productName = item.product;
+
+// Remove brand from product if the product already includes it
+if (item.brand && productName.toLowerCase().startsWith(item.brand.toLowerCase())) {
+  productName = productName.substring(item.brand.length).trim();
+}
+
+const brandTitle = item.brand
+  ? `${item.brand} – ${productName}`
+  : productName;
 
     const div = document.createElement("div");
     div.className = "sunscreen-card";
