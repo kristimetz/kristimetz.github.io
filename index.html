@@ -46,6 +46,20 @@
       background: #d2d2d2;
     }
 
+    /* Placeholder box for quiz */
+    .quiz-placeholder {
+      margin-top: 25px;
+      margin-bottom: 35px;
+      padding: 18px 20px;
+      background: #fafafa;
+      border-left: 4px solid #0057b7;
+      border-radius: 6px;
+    }
+
+    .quiz-placeholder h2 {
+      margin: 0 0 8px;
+      font-size: 1.4em;
+    }
   </style>
 </head>
 
@@ -60,11 +74,13 @@
 
   <h1>Welcome to the Sunscreen Lab</h1>
 
-  <p>Search by brand, product, or ingredient.</p>
+  <!-- Sunscreen quiz placeholder -->
+  <div class="quiz-placeholder">
+    <h2>Find My Sunscreen <small>(coming soon)</small></h2>
+    <p>A quick personalized quiz will appear here to recommend sunscreens based on your skin type, needs, and preferences.</p>
+  </div>
 
-  <input id="search" type="search" placeholder="Search…" />
-
-  <!-- ⭐ NEW: Brand list -->
+  <!-- Browse by brand -->
   <h2>Browse by Brand 
     <small>(or <a href="all.html">list all sunscreens</a>)</small>
   </h2>
