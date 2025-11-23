@@ -1,51 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>The Sunscreen Lab</title>
-  <link rel="icon" type="image/png" href="favicon2.png">
-  <link rel="stylesheet" href="styles/global.css">
-
-  <style>
-    .site-banner img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    input[type="search"] {
-      width: 100%;
-      padding: 10px;
-      font-size: 1.1em;
-      margin-bottom: 20px;
-    }
-
-    /* ⭐ NEW: Brand list styling */
-    .brand-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .brand-list a {
-      text-decoration: none;
-      color: #0057b7;
-      font-weight: 600;
-    }
-
-    .brand-list a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-
+<head><meta charset="UTF-8"><title>The Sunscreen Lab</title></head>
 <body>
 
-  <!-- Banner -->
-  <div class="site-banner">
-    <img src="SunscreenLabBanner.jpg" alt="The Sunscreen Lab Banner">
-  </div>
+<div id="top-menu" style="padding:10px; background:#f4f4f4; display:flex; gap:10px;">
+  <input type="text" placeholder="Search Sunscreens" style="flex:1; padding:8px;">
+  <button>Filters</button>
+  <a href="all.html"><button>Explore Sunscreens</button></a>
+  <a href="add.html"><button>Add a Sunscreen</button></a>
+</div>
+
+
+<div class="site-banner">
+  <img src="SunscreenLabBanner.jpg" alt="The Sunscreen Lab Banner">
+</div>
+
+<h1>Home Page</h1>
+</body>
+
 
   <p>Search by brand, product, or ingredient.</p>
 
