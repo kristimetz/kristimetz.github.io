@@ -198,7 +198,7 @@ header input[type="text"] {
   padding: var(--space-6) 0;
 
   /* The banner image */
-  background-image: url("images/sunscreenlab_banner.jpg");
+  background-image: url("images/sunscreenlab_banner.png");
 
   /* Make it behave like a proper hero banner */
   background-size: cover;       /* fill the space */
