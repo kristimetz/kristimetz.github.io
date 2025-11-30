@@ -245,4 +245,52 @@ header input[type="text"] {
   background: #0669cc;
 }
 
+/* ------------------------------------------
+   🌞 STEP 11 — Enhanced Browse by Brand
+   ------------------------------------------ */
+
+.section-brands {
+  padding: var(--space-6) 0;
+}
+
+.section-brands h2 {
+  margin-bottom: var(--space-4);
+}
+
+/* Container spacing */
+.brand-section-group {
+  margin-bottom: var(--space-4);
+}
+
+/* Improved pill layout */
+.brand-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.brand-pill {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-bg-alt);
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.brand-pill:hover {
+  background: var(--color-accent-light);
+  border-color: var(--color-accent);
+}
+
+/* Show/hide button for full brand list */
+#showAllBrandsBtn {
+  margin-top: var(--space-4);
+  font-size: 0.9rem;
+  border-radius: 6px;
+}
+
+
 
