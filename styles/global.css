@@ -346,6 +346,24 @@ header input[type="text"] {
   font-size: 0.85rem;
   color: var(--color-text-light);
 }
+/* ------------------------------------------
+   🌞 STEP 13 — Recommender Placeholder
+   ------------------------------------------ */
+
+.section-recommender {
+  padding: var(--space-6) 0;
+}
+
+.recommender-box {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  padding: var(--space-5);
+  border-radius: 10px;
+  color: var(--color-text-light);
+  font-size: 0.95rem;
+  text-align: center;
+  line-height: 1.5;
+}
 
 
 
