@@ -9,157 +9,46 @@
 
 <body>
 
-  <!-- TOP NAV BAR -->
-  <header>
-    <div class="nav-row">
-      <input type="text" placeholder="Search Sunscreens…" id="mainSearch">
-      <button id="openFilters">Filters</button>
-      <button onclick="location.href='all.html'">Explore Sunscreens</button>
-      <button onclick="location.href='add.html'">Add a Sunscreen</button>
-    </div>
-  </header>
+  <div id="top-menu">
+<form action="search.html" method="GET" style="flex: 1;">
+  <input 
+    type="text" 
+    name="q" 
+    placeholder="Search Sunscreens" 
+    style="width: 100%; padding: 8px;"
+  >
+</form>
+    <button>Filters</button>
+<div class="dropdown">
+  <button class="menu-link dropdown-btn">Explore Sunscreens ▾</button>
+  <div class="dropdown-content">
+    <a href="all.html">All Sunscreens</a>
+    <a href="brands.html">By Brand</a>
+    <a href="types.html">By Filter Type</a>
+    <a href="spf.html">By SPF Range</a>
+    <a href="finish.html">By Finish</a>
+    <a href="filters.html">UV Filter Encyclopedia</a>
+  </div>
+</div>
+    <a class="menu-link" href="add.html">Add a Sunscreen</a>
+  </div>
 
-  <!-- HERO SECTION -->
-  <section class="section section-hero">
-    <div class="section-hero-text">
-      <h1>The Sunscreen Lab</h1>
-      <p>Evidence-based data on sunscreen ingredients, filters, safety & performance.</p>
-    </div>
-  </section>
+  <h1>Welcome to the Sunscreen Lab</h1>
 
-  <!-- SEARCH SECTION -->
-  <section class="section section-search">
-    <h2>Search for a Sunscreen</h2>
+  <!-- Sunscreen quiz placeholder -->
+  <div class="quiz-placeholder">
+    <h2>Find My Sunscreen <small>(coming soon)</small></h2>
+    <p>A quick personalized quiz will appear here to recommend sunscreens based on your skin type, needs, and preferences.</p>
+  </div>
 
-    <div class="search-bar-wrapper">
-      <input type="text" placeholder="Search by keyword…">
-      <button>Open Filters</button>
-    </div>
+  <!-- Browse by brand -->
+  <h2>Browse by Brand 
+    <small>(or <a href="all.html">list all sunscreens</a>)</small>
+  </h2>
 
-    <div class="placeholder-box">
-      (Filters overlay will appear here)
-    </div>
-  </section>
+  <div id="brand-list" class="brand-list"></div>
 
-  <!-- BROWSE BY BRAND -->
-  <section class="section section-brands">
-    <h2>Browse by Brand</h2>
-
-    <div class="brand-section-group">
-      <div id="topBrandGrid" class="brand-grid">
-        <div class="brand-pill">Loading...</div>
-      </div>
-    </div>
-
-    <button id="showAllBrandsBtn">Show All Brands</button>
-
-    <div id="allBrandGrid" class="brand-grid" style="display:none;">
-      <!-- Full list will appear here -->
-    </div>
-  </section>
-
-  <!-- TOP RECOMMENDED SUNSCREENS -->
-  <section class="section section-top-picks">
-    <h2>Top Recommended Sunscreens</h2>
-
-    <div class="card-row">
-
-      <div class="card">
-        <div class="card-title">Top Pick #1</div>
-        <div class="card-placeholder">(placeholder)</div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Top Pick #2</div>
-        <div class="card-placeholder">(placeholder)</div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Top Pick #3</div>
-        <div class="card-placeholder">(placeholder)</div>
-      </div>
-
-      <div class="card">
-        <div class="card-title">Top Pick #4</div>
-        <div class="card-placeholder">(placeholder)</div>
-      </div>
-
-    </div>
-
-    <div class="placeholder-box">
-      (Eventually: dynamically generated recommendations)
-    </div>
-  </section>
-
-  <!-- SUNSCREEN RECOMMENDER PLACEHOLDER -->
-  <section class="section section-recommender">
-    <h2>Sunscreen Recommender (Coming Soon)</h2>
-
-    <div class="recommender-box">
-      Answer a few questions → get personalized sunscreen recommendations.<br>
-      (Future feature here)
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section class="section section-about">
-    <h2>About The Sunscreen Lab</h2>
-
-    <div class="about-box">
-      <p>
-        The Sunscreen Lab is an independent data-driven project focused on analyzing sunscreen ingredients,
-        filter combinations, safety profiles, and performance characteristics. Our mission is to provide 
-        science-backed transparency for all skin types.
-      </p>
-    </div>
-  </section>
-
-  <footer style="text-align:center; padding:30px; color:#666;">
-    © 2025 The Sunscreen Lab
-  </footer>
-
-  <!-- BRAND LOADING SCRIPT -->
-  <script>
-    async function loadBrands() {
-      const response = await fetch("data/sunscreens.json");
-      const data = await response.json();
-
-      // Count brands
-      const brandCounts = {};
-      data.forEach(item => {
-        const b = item.brand.trim();
-        brandCounts[b] = (brandCounts[b] || 0) + 1;
-      });
-
-      const brands = Object.keys(brandCounts);
-
-      // Sort by most common
-      const sortedByCount = [...brands].sort((a, b) => brandCounts[b] - brandCounts[a]);
-
-      // Top 6 brands
-      const topBrands = sortedByCount.slice(0, 6);
-
-      // Fill top brands
-      const topGrid = document.getElementById("topBrandGrid");
-      topGrid.innerHTML = "";
-      topBrands.forEach(b => {
-        const div = document.createElement("div");
-        div.className = "brand-pill";
-        div.textContent = b;
-        topGrid.appendChild(div);
-      });
-
-      // Full A–Z list
-      const sortedAZ = [...brands].sort();
-      const allGrid = document.getElementById("allBrandGrid");
-      allGrid.innerHTML = "";
-      sortedAZ.forEach(b => {
-        const div = document.createElement("div");
-        div.className = "brand-pill";
-        div.textContent = b;
-        allGrid.appendChild(div);
-      });
-    }
+  <div id="results"></div>
 
     // Expand/collapse button
     document.getElementById("showAllBrandsBtn").addEventListener("click", () => {
