@@ -2,70 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>The Sunscreen Lab – Wireframe</title>
-  <link rel="stylesheet" href="styles/global.css">  
+  <title>The Sunscreen Lab</title>
+  <link rel="stylesheet" href="styles/global.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
 
+  <!-- TOP MENU -->
   <div id="top-menu">
-<form action="search.html" method="GET" style="flex: 1;">
-  <input 
-    type="text" 
-    name="q" 
-    placeholder="Search Sunscreens" 
-    style="width: 100%; padding: 8px;"
-  >
-</form>
+    <form action="search.html" method="GET" style="flex: 1;">
+      <input 
+        type="text" 
+        name="q" 
+        placeholder="Search Sunscreens" 
+        style="width: 100%; padding: 8px;"
+      >
+    </form>
+
     <button>Filters</button>
-<div class="dropdown">
-  <button class="menu-link dropdown-btn">Explore Sunscreens ▾</button>
-  <div class="dropdown-content">
-    <a href="all.html">All Sunscreens</a>
-    <a href="brands.html">By Brand</a>
-    <a href="types.html">By Filter Type</a>
-    <a href="spf.html">By SPF Range</a>
-    <a href="finish.html">By Finish</a>
-    <a href="filters.html">UV Filter Encyclopedia</a>
-  </div>
-</div>
+
+    <div class="dropdown">
+      <button class="menu-link dropdown-btn">Explore Sunscreens ▾</button>
+      <div class="dropdown-content">
+        <a href="all.html">All Sunscreens</a>
+        <a href="brands.html">By Brand</a>
+        <a href="types.html">By Filter Type</a>
+        <a href="spf.html">By SPF Range</a>
+        <a href="finish.html">By Finish</a>
+        <a href="filters.html">UV Filter Encyclopedia</a>
+      </div>
+    </div>
+
     <a class="menu-link" href="add.html">Add a Sunscreen</a>
+  </div>
+
+  <!-- BANNER -->
+  <div class="site-banner">
+    <img src="images/Cropped_sunscreenlab_banner.png" alt="The Sunscreen Lab Banner" style="width:100%; display:block;">
   </div>
 
   <h1>Welcome to the Sunscreen Lab</h1>
 
-  <!-- Sunscreen quiz placeholder -->
+  <!-- QUIZ PLACEHOLDER -->
   <div class="quiz-placeholder">
     <h2>Find My Sunscreen <small>(coming soon)</small></h2>
     <p>A quick personalized quiz will appear here to recommend sunscreens based on your skin type, needs, and preferences.</p>
   </div>
 
-  <!-- Browse by brand -->
+  <!-- BROWSE BY BRAND -->
   <h2>Browse by Brand 
     <small>(or <a href="all.html">list all sunscreens</a>)</small>
   </h2>
 
+  <!-- BRAND PREVIEW GRID -->
   <div id="brand-list" class="brand-list"></div>
+
+  <!-- TOGGLE BUTTON -->
+  <button id="showAllBrandsBtn" class="menu-link" style="margin-top:15px;">
+    Show All Brands
+  </button>
+
+  <!-- FULL BRAND GRID HIDDEN INITIALLY -->
+  <div id="allBrandGrid" class="brand-list" style="display:none; margin-top:15px;"></div>
 
   <div id="results"></div>
 
-    // Expand/collapse button
-    document.getElementById("showAllBrandsBtn").addEventListener("click", () => {
-      const fullList = document.getElementById("allBrandGrid");
-      const btn = document.getElementById("showAllBrandsBtn");
-
-      if (fullList.style.display === "none") {
-        fullList.style.display = "flex";
-        btn.textContent = "Hide All Brands";
-      } else {
-        fullList.style.display = "none";
-        btn.textContent = "Show All Brands";
-      }
-    });
-
-    loadBrands();
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
