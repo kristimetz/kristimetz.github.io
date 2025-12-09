@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Search Results – The Sunscreen Lab</title>
+  <link rel="stylesheet" href="global.css">
+</head>
+
+<body>
+  <h1>Search Results</h1>
+  <p id="search-summary"></p>
+
+  <div id="results"></div>
+
+  <script>
+    // Get search term from URL
+    const params = new URLSearchParams(window.location.search);
+    const query = params.get("q")?.toLowerCase() || "";
+    document.getElementById("search-summary").textContent =
+      query ? `Showing results for: "${query}"` : "No search term provided.";
+
+    // Load sunscreen data
+    fetch("sunscreens.json")
+      .then(res => res.json())
+      .then(data => {
+        const results = data.filter(item => 
+          item.name.toLowerCase().includes(query) ||
+          item.brand.toLowerCase().includes(query) ||
+          (item.filters?.join(" ").toLowerCase().includes(query))
+        );
+
+        const container = document.getElementById("results");
+
+        if (results.length === 0) {
+          container.innerHTML = `<p>No results found.</p>`;
+          return;
+        }
+
+        container.innerHTML = results
+          .map(item => `
+            <div class="result-card">
+              <h3>${item.name}</h3>
+              <p><strong>Brand:</strong> ${item.brand}</p>
+              <p><strong>Filters:</strong> ${item.filters.join(", ")}</p>
+              <a href="sunscreen.html?id=${item.id}">View Details</a>
+            </div>
+          `)
+          .join("");
+      });
+  </script>
+
+</body>
+</html>
