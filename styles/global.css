@@ -368,3 +368,31 @@ button, .brand-pill, .card {
   height: auto;
   display: block;
 }
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 20px 0;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-bar button {
+  background: var(--color-accent, #0a85ff);
+  border: none;
+  padding: 10px 14px;
+  font-size: 1.1rem;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #076fcc;
+}
