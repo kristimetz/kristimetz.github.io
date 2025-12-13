@@ -21,8 +21,10 @@
   --color-text: #1A1A1A;        /* primary text */
   --color-text-light: #6B6763;  /* muted taupe-grey */
 
-  --color-accent: #CC8A47;       /* muted copper */
-  --color-accent-light: #D79A86; /* rose-beige accent */
+  /* Action / Interactive — Scientific Blue */
+  --color-action: #2F6F9F;
+  --color-action-hover: #245A80;
+  --color-action-soft: #E5F0F8;
 
   /* Spacing scale */
   --space-1: 4px;
@@ -68,7 +70,7 @@ h2 {
 /* 6. Base Button Styling */
 button {
   padding: var(--space-2) var(--space-4);
-  background: var(--color-accent);
+  background: var(--color-action);
   border: none;
   border-radius: 6px;
   color: white;
@@ -79,7 +81,7 @@ button {
 
 button:hover,
 header button:hover {
-  background: var(--color-accent-light);
+  background: var(--color-action-hover);
 }
 
 /* 7. Input fields */
@@ -154,7 +156,7 @@ header {
 
 .search-bar button {
   border: none;
-  background: var(--color-accent);
+  background: var(--color-action);
   padding: 0 12px;
   font-size: 18px;
   color: white;
@@ -164,7 +166,7 @@ header {
 }
 
 .search-bar button:hover {
-  background: var(--color-accent-light);
+  background: var(--color-action-hover);
 }
 
 /* ------------------------------------------
@@ -248,8 +250,8 @@ header {
 }
 
 .brand-pill:hover {
-  background: var(--color-accent-light);
-  border-color: var(--color-accent);
+  background: var(--color-action-soft);
+  border-color: var(--color-action);
 }
 
 /* ------------------------------------------
@@ -317,7 +319,7 @@ header {
 }
 
 /* ------------------------------------------
-   🌞 Legacy Homepage Support (Updated for Palette #2)
+   🌞 Legacy Homepage Support (Updated)
 ------------------------------------------- */
 
 #top-menu {
@@ -339,8 +341,8 @@ header {
 }
 
 .menu-link:hover {
-  background: var(--color-accent-light);
-  border-color: var(--color-accent);
+  background: var(--color-action-soft);
+  border-color: var(--color-action);
   color: var(--color-text);
 }
 
@@ -352,21 +354,21 @@ header {
 }
 
 .brand-list a {
-  color: var(--color-accent);
+  color: var(--color-action);
   font-weight: 600;
   text-decoration: none;
 }
 
 .brand-list a:hover {
   text-decoration: underline;
-  color: var(--color-accent-light);
+  color: var(--color-action-hover);
 }
 
 .quiz-placeholder {
   margin: 25px 0 35px;
   padding: 18px 20px;
   background: var(--color-bg-alt);
-  border-left: 4px solid var(--color-accent);
+  border-left: 4px solid var(--color-action);
   border-radius: 6px;
   color: var(--color-text);
 }
