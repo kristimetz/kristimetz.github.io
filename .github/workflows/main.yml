@@ -1,8 +1,13 @@
 name: Sunscreen Submission Intake
 
 on:
-  repository_dispatch:
-    types: [sunscreen_submission]
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "Test run"
+        required: false
+        default: "true"
+
 
 jobs:
   intake:
