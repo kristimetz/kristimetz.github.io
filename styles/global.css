@@ -131,8 +131,10 @@ header {
   color: var(--color-text);
   border: 1px solid var(--color-border);
   font-size: 16px;
+  font-weight: 500; /* ← ADD THIS */
   cursor: pointer;
 }
+
 
 /* 🔑 NAV LINKS SHOULD NOT LOOK LIKE TEXT LINKS */
 .nav-row a,
