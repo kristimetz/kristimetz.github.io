@@ -321,3 +321,36 @@ header {
   border-left: 4px solid var(--color-action);
   border-radius: 6px;
 }
+.result-title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.result-title a:hover {
+  text-decoration: underline;
+  color: var(--color-accent);
+}
+
+.result-card {
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-alt);
+  padding: 18px;
+  margin: 14px 0;
+  border-radius: 10px;
+  transition: box-shadow 0.2s ease;
+}
+
+.result-card:hover {
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+}
+
+.result-meta {
+  margin: 4px 0;
+  font-size: 0.95rem;
+}
+
+mark {
+  background: #fff3b0;
+  padding: 2px 3px;
+  border-radius: 3px;
+}
