@@ -100,6 +100,12 @@ button:hover {
 /* ----------------------------------------------------------
    5. Header / Navigation
 ---------------------------------------------------------- */
+/* Hide the hamburger for now */
+.nav-toggle {
+  display: none;
+}
+
+
 .site-header {
   background: radial-gradient(
     circle at 65% 40%,
