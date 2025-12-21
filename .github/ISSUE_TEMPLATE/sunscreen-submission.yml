@@ -1,0 +1,55 @@
+name: 🧴 Submit a Sunscreen
+description: Submit a sunscreen for review and inclusion in the Sunscreen DNA site.
+title: "[Sunscreen Submission]: "
+labels: ["sunscreen-submission"]
+
+body:
+  - type: input
+    id: brand
+    attributes:
+      label: Brand
+      placeholder: e.g., La Roche-Posay
+    validations:
+      required: true
+
+  - type: input
+    id: product_name
+    attributes:
+      label: Product Name
+      placeholder: e.g., Anthelios Melt-in Milk SPF 100
+    validations:
+      required: true
+
+  - type: input
+    id: spf
+    attributes:
+      label: SPF Rating
+      placeholder: e.g., SPF 50+
+    validations:
+      required: true
+
+  - type: dropdown
+    id: region
+    attributes:
+      label: Market / Region
+      options:
+        - United States
+        - EU
+        - Korea
+        - Japan
+        - Australia
+        - Other/not sure
+    validations:
+      required: true
+
+  - type: textarea
+    id: ingredients
+    attributes:
+      label: Ingredient List (INCI)
+      description: Paste the full ingredient list if available
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Finish, tint, skin type, filters, etc.
