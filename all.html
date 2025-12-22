@@ -65,7 +65,8 @@
     <h1>All Sunscreens</h1>
     <p>
       Browse and filter all sunscreens currently in the Sunscreen DNA database.
-      Filter type is determined automatically based on UV filters used.
+      Filter type (mineral, chemical, hybrid) is determined automatically based
+      on UV filters used.
     </p>
   </section>
 
@@ -73,8 +74,9 @@
        FILTER BAR
        ========================================== -->
   <section class="section">
-    <div style="display:flex; gap:16px; flex-wrap:wrap;">
+    <div style="display:flex; gap:32px; flex-wrap:wrap;">
 
+      <!-- Region (unchanged for now) -->
       <div>
         <label for="regionFilter"><strong>Region</strong></label><br>
         <select id="regionFilter">
@@ -87,19 +89,30 @@
         </select>
       </div>
 
+      <!-- Filter Type (stacked checkboxes) -->
       <div>
-        <label for="typeFilter"><strong>Filter Type</strong></label><br>
-        <select id="typeFilter">
-          <option value="">All</option>
-          <option value="Mineral">Mineral</option>
-          <option value="Chemical">Chemical</option>
-          <option value="Hybrid">Hybrid</option>
-        </select>
+        <strong>Filter Type</strong><br>
+
+        <label>
+          <input type="checkbox" name="filterType" value="Mineral">
+          Mineral
+        </label><br>
+
+        <label>
+          <input type="checkbox" name="filterType" value="Chemical">
+          Chemical
+        </label><br>
+
+        <label>
+          <input type="checkbox" name="filterType" value="Hybrid">
+          Hybrid
+        </label>
       </div>
 
       <div style="align-self:flex-end;">
         <button id="resetFilters">Reset Filters</button>
       </div>
+
     </div>
 
     <p id="resultsSummary" style="margin-top:12px; color:var(--color-text-light);"></p>
@@ -110,7 +123,7 @@
        ========================================== -->
   <section class="section">
     <div style="overflow-x:auto;">
-      <table id="resultsTableWrapper" style="width:100%; border-collapse:collapse;">
+      <table style="width:100%; border-collapse:collapse;">
         <thead>
           <tr style="border-bottom:1px solid var(--color-border);">
             <th data-sort="brand">Brand <span class="sort-indicator"></span></th>
@@ -135,14 +148,23 @@
     let currentSortColumn = null;
     let currentSortDirection = "asc";
 
+    function getSelectedFilterTypes() {
+      return Array.from(
+        document.querySelectorAll("input[name='filterType']:checked")
+      ).map(cb => cb.value);
+    }
+
     function applyFilters() {
       const region = document.getElementById("regionFilter").value;
-      const type = document.getElementById("typeFilter").value;
+      const selectedTypes = getSelectedFilterTypes();
 
       let filtered = allSunscreens.filter(s => {
         const derivedType = getFilterType(s.filters || []);
-        return (!region || s.region === region) &&
-               (!type || derivedType === type);
+
+        return (
+          (!region || s.region === region) &&
+          (selectedTypes.length === 0 || selectedTypes.includes(derivedType))
+        );
       });
 
       if (currentSortColumn) {
@@ -183,8 +205,8 @@
       table.innerHTML = "";
 
       data.forEach(s => {
-        const row = document.createElement("tr");
         const filterType = getFilterType(s.filters || []);
+        const row = document.createElement("tr");
 
         row.innerHTML =
           "<td>" + (s.brand || "") + "</td>" +
@@ -226,11 +248,15 @@
     });
 
     document.getElementById("regionFilter").addEventListener("change", applyFilters);
-    document.getElementById("typeFilter").addEventListener("change", applyFilters);
+    document.querySelectorAll("input[name='filterType']").forEach(cb =>
+      cb.addEventListener("change", applyFilters)
+    );
 
     document.getElementById("resetFilters").addEventListener("click", () => {
       document.getElementById("regionFilter").value = "";
-      document.getElementById("typeFilter").value = "";
+      document
+        .querySelectorAll("input[name='filterType']")
+        .forEach(cb => cb.checked = false);
       applyFilters();
     });
 
