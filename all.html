@@ -12,259 +12,298 @@
 
 <body class="page-all">
 
-  <!-- ==========================================
-       SITE HEADER
-       ========================================== -->
-  <header class="site-header">
-    <div class="header-inner">
+<!-- ==========================================
+     SITE HEADER
+========================================== -->
+<header class="site-header">
+  <div class="header-inner">
 
-      <img
-        src="images/sunscreen-dna-logo-cropped.png"
-        alt="Sunscreen DNA"
-        class="site-logo"
+    <img
+      src="images/sunscreen-dna-logo-cropped.png"
+      alt="Sunscreen DNA"
+      class="site-logo"
+    >
+
+    <nav class="site-nav">
+      <form id="site-search" action="searchresults.html" method="GET" class="search-bar">
+        <input type="text" name="q" placeholder="Search sunscreens…" required />
+        <button type="submit" aria-label="Search">🔍</button>
+      </form>
+
+      <div class="dropdown">
+        <button class="dropdown-btn menu-link">Explore Sunscreens</button>
+        <div class="dropdown-content">
+          <a href="all.html">All Sunscreens</a>
+          <a href="brands.html">By Brand</a>
+          <a href="types.html">By Filter Type</a>
+          <a href="spf.html">By SPF Range</a>
+          <a href="finish.html">By Finish</a>
+          <a href="filters.html">UV Filter Encyclopedia</a>
+        </div>
+      </div>
+
+      <a
+        href="https://github.com/sunscreenlab/sunscreendna/issues/new?template=sunscreen-submission.yml"
+        class="menu-link menu-link-primary"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Add a Sunscreen
+      </a>
+    </nav>
+
+    <button class="nav-toggle" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<!-- ==========================================
+     PAGE HEADER
+========================================== -->
+<section class="section">
+  <h1>All Sunscreens</h1>
+  <p>
+    Browse and filter all sunscreens currently in the Sunscreen DNA database.
+    Filter type is determined automatically from UV filters used.
+  </p>
+</section>
+
+<!-- ==========================================
+     FILTER BAR
+========================================== -->
+<section class="section">
+  <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:flex-start;">
+
+    <!-- BRAND FILTER -->
+    <div style="min-width:240px;">
+      <strong>Brand</strong><br>
+
+      <input
+        type="text"
+        id="brandSearch"
+        placeholder="Type to filter brands…"
+        style="width:100%; margin:6px 0 8px;"
       >
 
-      <nav class="site-nav">
-
-        <form id="site-search" action="searchresults.html" method="GET" class="search-bar">
-          <input type="text" name="q" placeholder="Search sunscreens…" required />
-          <button type="submit" aria-label="Search">🔍</button>
-        </form>
-
-        <div class="dropdown">
-          <button class="dropdown-btn menu-link">Explore Sunscreens</button>
-          <div class="dropdown-content">
-            <a href="all.html">All Sunscreens</a>
-            <a href="brands.html">By Brand</a>
-            <a href="types.html">By Filter Type</a>
-            <a href="spf.html">By SPF Range</a>
-            <a href="finish.html">By Finish</a>
-            <a href="filters.html">UV Filter Encyclopedia</a>
-          </div>
-        </div>
-
-        <a
-          href="https://github.com/sunscreenlab/sunscreendna/issues/new?template=sunscreen-submission.yml"
-          class="menu-link menu-link-primary"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Add a Sunscreen
-        </a>
-
-      </nav>
-
-      <button class="nav-toggle" aria-label="Open menu">☰</button>
-    </div>
-  </header>
-
-  <!-- ==========================================
-       PAGE HEADER
-       ========================================== -->
-  <section class="section">
-    <h1>All Sunscreens</h1>
-    <p>
-      Browse and filter all sunscreens currently in the Sunscreen DNA database.
-      Filter type (mineral, chemical, hybrid) is determined automatically based
-      on UV filters used.
-    </p>
-  </section>
-
-  <!-- ==========================================
-       FILTER BAR
-       ========================================== -->
-  <section class="section">
-    <div style="display:flex; gap:32px; flex-wrap:wrap;">
-
-      <!-- Region (unchanged for now) -->
-      <div>
-        <label for="regionFilter"><strong>Region</strong></label><br>
-        <select id="regionFilter">
-          <option value="">All</option>
-          <option value="US">United States</option>
-          <option value="EU">EU</option>
-          <option value="Korea">Korea</option>
-          <option value="Japan">Japan</option>
-          <option value="Australia">Australia</option>
-        </select>
-      </div>
-
-      <!-- Filter Type (stacked checkboxes) -->
-      <div>
-        <strong>Filter Type</strong><br>
-
-        <label>
-          <input type="checkbox" name="filterType" value="Mineral">
-          Mineral
-        </label><br>
-
-        <label>
-          <input type="checkbox" name="filterType" value="Chemical">
-          Chemical
-        </label><br>
-
-        <label>
-          <input type="checkbox" name="filterType" value="Hybrid">
-          Hybrid
-        </label>
-      </div>
-
-      <div style="align-self:flex-end;">
-        <button id="resetFilters">Reset Filters</button>
-      </div>
-
+      <div
+        id="brandList"
+        style="
+          max-height:180px;
+          overflow-y:auto;
+          border:1px solid var(--color-border);
+          padding:8px;
+          border-radius:6px;
+          background:white;
+        "
+      ></div>
     </div>
 
-    <p id="resultsSummary" style="margin-top:12px; color:var(--color-text-light);"></p>
-  </section>
+    <!-- FILTER TYPE -->
+    <div>
+      <strong>Filter Type</strong><br>
 
-  <!-- ==========================================
-       RESULTS TABLE
-       ========================================== -->
-  <section class="section">
-    <div style="overflow-x:auto;">
-      <table style="width:100%; border-collapse:collapse;">
-        <thead>
-          <tr style="border-bottom:1px solid var(--color-border);">
-            <th data-sort="brand">Brand <span class="sort-indicator"></span></th>
-            <th data-sort="product">Product <span class="sort-indicator"></span></th>
-            <th data-sort="spf">SPF <span class="sort-indicator"></span></th>
-            <th data-sort="region">Region <span class="sort-indicator"></span></th>
-            <th data-sort="filterType">Filter Type <span class="sort-indicator"></span></th>
-          </tr>
-        </thead>
-        <tbody id="resultsTable"></tbody>
-      </table>
+      <label><input type="checkbox" name="filterType" value="Mineral"> Mineral</label><br>
+      <label><input type="checkbox" name="filterType" value="Chemical"> Chemical</label><br>
+      <label><input type="checkbox" name="filterType" value="Hybrid"> Hybrid</label>
     </div>
-  </section>
 
-  <!-- ==========================================
-       SCRIPTS
-       ========================================== -->
-  <script src="script.js"></script>
+    <!-- REGION (unchanged) -->
+    <div>
+      <label for="regionFilter"><strong>Region</strong></label><br>
+      <select id="regionFilter">
+        <option value="">All</option>
+        <option value="US">United States</option>
+        <option value="EU">EU</option>
+        <option value="Korea">Korea</option>
+        <option value="Japan">Japan</option>
+        <option value="Australia">Australia</option>
+      </select>
+    </div>
 
-  <script>
-    let allSunscreens = [];
-    let currentSortColumn = null;
-    let currentSortDirection = "asc";
+    <div style="align-self:flex-end;">
+      <button id="resetFilters">Reset Filters</button>
+    </div>
 
-    function getSelectedFilterTypes() {
-      return Array.from(
-        document.querySelectorAll("input[name='filterType']:checked")
-      ).map(cb => cb.value);
-    }
+  </div>
 
-    function applyFilters() {
-      const region = document.getElementById("regionFilter").value;
-      const selectedTypes = getSelectedFilterTypes();
+  <p id="resultsSummary" style="margin-top:12px; color:var(--color-text-light);"></p>
+</section>
 
-      let filtered = allSunscreens.filter(s => {
-        const derivedType = getFilterType(s.filters || []);
+<!-- ==========================================
+     RESULTS TABLE
+========================================== -->
+<section class="section">
+  <div style="overflow-x:auto;">
+    <table style="width:100%; border-collapse:collapse;">
+      <thead>
+        <tr style="border-bottom:1px solid var(--color-border);">
+          <th data-sort="brand">Brand <span class="sort-indicator"></span></th>
+          <th data-sort="product">Product <span class="sort-indicator"></span></th>
+          <th data-sort="spf">SPF <span class="sort-indicator"></span></th>
+          <th data-sort="region">Region <span class="sort-indicator"></span></th>
+          <th data-sort="filterType">Filter Type <span class="sort-indicator"></span></th>
+        </tr>
+      </thead>
+      <tbody id="resultsTable"></tbody>
+    </table>
+  </div>
+</section>
 
-        return (
-          (!region || s.region === region) &&
-          (selectedTypes.length === 0 || selectedTypes.includes(derivedType))
-        );
-      });
+<!-- ==========================================
+     SCRIPTS
+========================================== -->
+<script src="script.js"></script>
 
-      if (currentSortColumn) {
-        filtered = sortData(filtered, currentSortColumn);
-      }
+<script>
+let allSunscreens = [];
+let allBrands = [];
+let currentSortColumn = null;
+let currentSortDirection = "asc";
 
-      renderTable(filtered);
-    }
+function getSelectedBrands() {
+  return Array.from(
+    document.querySelectorAll("input[name='brandFilter']:checked")
+  ).map(cb => cb.value);
+}
 
-    function sortData(data, column) {
-      const direction = currentSortDirection === "asc" ? 1 : -1;
+function getSelectedFilterTypes() {
+  return Array.from(
+    document.querySelectorAll("input[name='filterType']:checked")
+  ).map(cb => cb.value);
+}
 
-      return data.slice().sort((a, b) => {
-        let valA, valB;
+function renderBrandList(filterText = "") {
+  const container = document.getElementById("brandList");
+  container.innerHTML = "";
 
-        if (column === "filterType") {
-          valA = getFilterType(a.filters || []);
-          valB = getFilterType(b.filters || []);
-        } else if (column === "product") {
-          valA = a.product || a.name || "";
-          valB = b.product || b.name || "";
-        } else {
-          valA = a[column] || "";
-          valB = b[column] || "";
-        }
+  allBrands
+    .filter(b => b.toLowerCase().includes(filterText.toLowerCase()))
+    .forEach(brand => {
+      const label = document.createElement("label");
+      label.style.display = "block";
 
-        if (typeof valA === "string") valA = valA.toLowerCase();
-        if (typeof valB === "string") valB = valB.toLowerCase();
+      label.innerHTML =
+        "<input type='checkbox' name='brandFilter' value='" + brand + "'> " +
+        brand;
 
-        if (valA < valB) return -1 * direction;
-        if (valA > valB) return 1 * direction;
-        return 0;
-      });
-    }
-
-    function renderTable(data) {
-      const table = document.getElementById("resultsTable");
-      table.innerHTML = "";
-
-      data.forEach(s => {
-        const filterType = getFilterType(s.filters || []);
-        const row = document.createElement("tr");
-
-        row.innerHTML =
-          "<td>" + (s.brand || "") + "</td>" +
-          "<td><a href='sunscreen.html?id=" + encodeURIComponent(s.id) + "'>" +
-            (s.product || s.name || "") +
-          "</a></td>" +
-          "<td>" + (s.spf || "") + "</td>" +
-          "<td>" + (s.region || "") + "</td>" +
-          "<td>" + filterType + "</td>";
-
-        table.appendChild(row);
-      });
-
-      document.getElementById("resultsSummary").textContent =
-        "Showing " + data.length + " sunscreens";
-    }
-
-    document.querySelectorAll("th[data-sort]").forEach(th => {
-      th.addEventListener("click", () => {
-        const column = th.dataset.sort;
-
-        if (currentSortColumn === column) {
-          currentSortDirection = currentSortDirection === "asc" ? "desc" : "asc";
-        } else {
-          currentSortColumn = column;
-          currentSortDirection = "asc";
-        }
-
-        document.querySelectorAll("th").forEach(h =>
-          h.classList.remove("sorted-asc", "sorted-desc")
-        );
-
-        th.classList.add(
-          currentSortDirection === "asc" ? "sorted-asc" : "sorted-desc"
-        );
-
-        applyFilters();
-      });
+      label.querySelector("input").addEventListener("change", applyFilters);
+      container.appendChild(label);
     });
+}
 
-    document.getElementById("regionFilter").addEventListener("change", applyFilters);
-    document.querySelectorAll("input[name='filterType']").forEach(cb =>
-      cb.addEventListener("change", applyFilters)
+function applyFilters() {
+  const region = document.getElementById("regionFilter").value;
+  const selectedTypes = getSelectedFilterTypes();
+  const selectedBrands = getSelectedBrands();
+
+  let filtered = allSunscreens.filter(s => {
+    const derivedType = getFilterType(s.filters || []);
+
+    return (
+      (!region || s.region === region) &&
+      (selectedTypes.length === 0 || selectedTypes.includes(derivedType)) &&
+      (selectedBrands.length === 0 || selectedBrands.includes(s.brand))
     );
+  });
 
-    document.getElementById("resetFilters").addEventListener("click", () => {
-      document.getElementById("regionFilter").value = "";
-      document
-        .querySelectorAll("input[name='filterType']")
-        .forEach(cb => cb.checked = false);
-      applyFilters();
-    });
+  if (currentSortColumn) {
+    filtered = sortData(filtered, currentSortColumn);
+  }
 
-    loadSunscreens().then(data => {
-      allSunscreens = data || [];
-      renderTable(allSunscreens);
-    });
-  </script>
+  renderTable(filtered);
+}
+
+function sortData(data, column) {
+  const dir = currentSortDirection === "asc" ? 1 : -1;
+
+  return data.slice().sort((a, b) => {
+    let A, B;
+
+    if (column === "filterType") {
+      A = getFilterType(a.filters || []);
+      B = getFilterType(b.filters || []);
+    } else if (column === "product") {
+      A = a.product || a.name || "";
+      B = b.product || b.name || "";
+    } else {
+      A = a[column] || "";
+      B = b[column] || "";
+    }
+
+    if (typeof A === "string") A = A.toLowerCase();
+    if (typeof B === "string") B = B.toLowerCase();
+
+    if (A < B) return -1 * dir;
+    if (A > B) return 1 * dir;
+    return 0;
+  });
+}
+
+function renderTable(data) {
+  const table = document.getElementById("resultsTable");
+  table.innerHTML = "";
+
+  data.forEach(s => {
+    const row = document.createElement("tr");
+    row.innerHTML =
+      "<td>" + s.brand + "</td>" +
+      "<td><a href='sunscreen.html?id=" + encodeURIComponent(s.id) + "'>" +
+        (s.product || s.name) +
+      "</a></td>" +
+      "<td>" + (s.spf || "") + "</td>" +
+      "<td>" + (s.region || "") + "</td>" +
+      "<td>" + getFilterType(s.filters || []) + "</td>";
+
+    table.appendChild(row);
+  });
+
+  document.getElementById("resultsSummary").textContent =
+    "Showing " + data.length + " sunscreens";
+}
+
+document.getElementById("brandSearch").addEventListener("input", e => {
+  renderBrandList(e.target.value);
+});
+
+document.getElementById("regionFilter").addEventListener("change", applyFilters);
+document.querySelectorAll("input[name='filterType']").forEach(cb =>
+  cb.addEventListener("change", applyFilters)
+);
+
+document.getElementById("resetFilters").addEventListener("click", () => {
+  document.getElementById("regionFilter").value = "";
+  document.getElementById("brandSearch").value = "";
+  document.querySelectorAll("input[type='checkbox']").forEach(cb => cb.checked = false);
+  renderBrandList();
+  applyFilters();
+});
+
+document.querySelectorAll("th[data-sort]").forEach(th => {
+  th.addEventListener("click", () => {
+    const col = th.dataset.sort;
+
+    if (currentSortColumn === col) {
+      currentSortDirection = currentSortDirection === "asc" ? "desc" : "asc";
+    } else {
+      currentSortColumn = col;
+      currentSortDirection = "asc";
+    }
+
+    document.querySelectorAll("th").forEach(h =>
+      h.classList.remove("sorted-asc", "sorted-desc")
+    );
+    th.classList.add(currentSortDirection === "asc" ? "sorted-asc" : "sorted-desc");
+
+    applyFilters();
+  });
+});
+
+loadSunscreens().then(data => {
+  allSunscreens = data || [];
+  allBrands = [...new Set(allSunscreens.map(s => s.brand))].sort();
+  renderBrandList();
+  renderTable(allSunscreens);
+});
+</script>
 
 </body>
 </html>
