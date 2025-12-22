@@ -199,7 +199,8 @@
       });
 
       document.getElementById("resultsSummary").textContent =
-        \`Showing \${data.length} sunscreen\${data.length !== 1 ? "s" : ""}\`;
+        `Showing ${data.length} sunscreen${data.length !== 1 ? "s" : ""}`;
+
     }
 
     document.getElementById("regionFilter").addEventListener("change", applyFilters);
