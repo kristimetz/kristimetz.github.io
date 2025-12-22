@@ -313,3 +313,21 @@ button:hover {
     box-shadow: none;
   }
 }
+th[data-sort] {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sort-indicator {
+  font-size: 0.75em;
+  margin-left: 4px;
+  opacity: 0.6;
+}
+
+th.sorted-asc .sort-indicator::after {
+  content: "▲";
+}
+
+th.sorted-desc .sort-indicator::after {
+  content: "▼";
+}

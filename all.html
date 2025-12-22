@@ -4,10 +4,7 @@
   <meta charset="UTF-8" />
   <title>All Sunscreens – Sunscreen DNA</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/favicon.png">
-
-  <!-- Global stylesheet -->
   <link rel="stylesheet" href="styles/global.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,42 +13,26 @@
 <body class="page-all">
 
   <!-- ==========================================
-       SITE HEADER (Logo + Navigation)
+       SITE HEADER
        ========================================== -->
   <header class="site-header">
     <div class="header-inner">
 
-      <!-- LOGO -->
       <img
         src="images/sunscreen-dna-logo-cropped.png"
         alt="Sunscreen DNA"
         class="site-logo"
       >
 
-      <!-- PRIMARY NAVIGATION -->
       <nav class="site-nav">
 
-        <!-- SEARCH -->
-        <form
-          id="site-search"
-          action="searchresults.html"
-          method="GET"
-          class="search-bar"
-        >
-          <input
-            type="text"
-            name="q"
-            placeholder="Search sunscreens…"
-            required
-          />
+        <form id="site-search" action="searchresults.html" method="GET" class="search-bar">
+          <input type="text" name="q" placeholder="Search sunscreens…" required />
           <button type="submit" aria-label="Search">🔍</button>
         </form>
 
-        <!-- DROPDOWN -->
         <div class="dropdown">
-          <button class="dropdown-btn menu-link">
-            Explore Sunscreens
-          </button>
+          <button class="dropdown-btn menu-link">Explore Sunscreens</button>
           <div class="dropdown-content">
             <a href="all.html">All Sunscreens</a>
             <a href="brands.html">By Brand</a>
@@ -62,7 +43,6 @@
           </div>
         </div>
 
-        <!-- PRIMARY CTA -->
         <a
           href="https://github.com/sunscreenlab/sunscreendna/issues/new?template=sunscreen-submission.yml"
           class="menu-link menu-link-primary"
@@ -74,11 +54,7 @@
 
       </nav>
 
-      <!-- HAMBURGER BUTTON -->
-      <button class="nav-toggle" aria-label="Open menu">
-        ☰
-      </button>
-
+      <button class="nav-toggle" aria-label="Open menu">☰</button>
     </div>
   </header>
 
@@ -89,8 +65,7 @@
     <h1>All Sunscreens</h1>
     <p>
       Browse and filter all sunscreens currently in the Sunscreen DNA database.
-      Filter type (mineral, chemical, hybrid) is determined automatically based
-      on the UV filters used.
+      Filter type is determined automatically based on UV filters used.
     </p>
   </section>
 
@@ -100,7 +75,6 @@
   <section class="section">
     <div style="display:flex; gap:16px; flex-wrap:wrap;">
 
-      <!-- Region -->
       <div>
         <label for="regionFilter"><strong>Region</strong></label><br>
         <select id="regionFilter">
@@ -113,7 +87,6 @@
         </select>
       </div>
 
-      <!-- Filter Type -->
       <div>
         <label for="typeFilter"><strong>Filter Type</strong></label><br>
         <select id="typeFilter">
@@ -127,13 +100,9 @@
       <div style="align-self:flex-end;">
         <button id="resetFilters">Reset Filters</button>
       </div>
-
     </div>
 
-    <p
-      id="resultsSummary"
-      style="margin-top:12px; color:var(--color-text-light);"
-    ></p>
+    <p id="resultsSummary" style="margin-top:12px; color:var(--color-text-light);"></p>
   </section>
 
   <!-- ==========================================
@@ -141,14 +110,14 @@
        ========================================== -->
   <section class="section">
     <div style="overflow-x:auto;">
-      <table style="width:100%; border-collapse:collapse;">
+      <table id="resultsTableWrapper" style="width:100%; border-collapse:collapse;">
         <thead>
-          <tr style="text-align:left; border-bottom:1px solid var(--color-border);">
-            <th style="padding:8px;">Brand</th>
-            <th style="padding:8px;">Product</th>
-            <th style="padding:8px;">SPF</th>
-            <th style="padding:8px;">Region</th>
-            <th style="padding:8px;">Filter Type</th>
+          <tr style="border-bottom:1px solid var(--color-border);">
+            <th data-sort="brand">Brand <span class="sort-indicator"></span></th>
+            <th data-sort="product">Product <span class="sort-indicator"></span></th>
+            <th data-sort="spf">SPF <span class="sort-indicator"></span></th>
+            <th data-sort="region">Region <span class="sort-indicator"></span></th>
+            <th data-sort="filterType">Filter Type <span class="sort-indicator"></span></th>
           </tr>
         </thead>
         <tbody id="resultsTable"></tbody>
@@ -157,24 +126,56 @@
   </section>
 
   <!-- ==========================================
-       DATA + LOGIC
+       SCRIPTS
        ========================================== -->
   <script src="script.js"></script>
 
   <script>
     let allSunscreens = [];
+    let currentSortColumn = null;
+    let currentSortDirection = "asc";
 
     function applyFilters() {
       const region = document.getElementById("regionFilter").value;
       const type = document.getElementById("typeFilter").value;
 
-      const filtered = allSunscreens.filter(s => {
+      let filtered = allSunscreens.filter(s => {
         const derivedType = getFilterType(s.filters || []);
         return (!region || s.region === region) &&
                (!type || derivedType === type);
       });
 
+      if (currentSortColumn) {
+        filtered = sortData(filtered, currentSortColumn);
+      }
+
       renderTable(filtered);
+    }
+
+    function sortData(data, column) {
+      const direction = currentSortDirection === "asc" ? 1 : -1;
+
+      return data.slice().sort((a, b) => {
+        let valA, valB;
+
+        if (column === "filterType") {
+          valA = getFilterType(a.filters || []);
+          valB = getFilterType(b.filters || []);
+        } else if (column === "product") {
+          valA = a.product || a.name || "";
+          valB = b.product || b.name || "";
+        } else {
+          valA = a[column] || "";
+          valB = b[column] || "";
+        }
+
+        if (typeof valA === "string") valA = valA.toLowerCase();
+        if (typeof valB === "string") valB = valB.toLowerCase();
+
+        if (valA < valB) return -1 * direction;
+        if (valA > valB) return 1 * direction;
+        return 0;
+      });
     }
 
     function renderTable(data) {
@@ -182,21 +183,17 @@
       table.innerHTML = "";
 
       data.forEach(s => {
-        const filterType = getFilterType(s.filters || []);
         const row = document.createElement("tr");
-
-        const sunscreenId = s.id;
+        const filterType = getFilterType(s.filters || []);
 
         row.innerHTML =
-          "<td style='padding:8px;'>" + (s.brand || "") + "</td>" +
-          "<td style='padding:8px;'>" +
-            "<a href='sunscreen.html?id=" + encodeURIComponent(sunscreenId) + "'>" +
-              (s.name || s.product || "") +
-            "</a>" +
-          "</td>" +
-          "<td style='padding:8px;'>" + (s.spf || "") + "</td>" +
-          "<td style='padding:8px;'>" + (s.region || "") + "</td>" +
-          "<td style='padding:8px;'>" + filterType + "</td>";
+          "<td>" + (s.brand || "") + "</td>" +
+          "<td><a href='sunscreen.html?id=" + encodeURIComponent(s.id) + "'>" +
+            (s.product || s.name || "") +
+          "</a></td>" +
+          "<td>" + (s.spf || "") + "</td>" +
+          "<td>" + (s.region || "") + "</td>" +
+          "<td>" + filterType + "</td>";
 
         table.appendChild(row);
       });
@@ -204,6 +201,29 @@
       document.getElementById("resultsSummary").textContent =
         "Showing " + data.length + " sunscreens";
     }
+
+    document.querySelectorAll("th[data-sort]").forEach(th => {
+      th.addEventListener("click", () => {
+        const column = th.dataset.sort;
+
+        if (currentSortColumn === column) {
+          currentSortDirection = currentSortDirection === "asc" ? "desc" : "asc";
+        } else {
+          currentSortColumn = column;
+          currentSortDirection = "asc";
+        }
+
+        document.querySelectorAll("th").forEach(h =>
+          h.classList.remove("sorted-asc", "sorted-desc")
+        );
+
+        th.classList.add(
+          currentSortDirection === "asc" ? "sorted-asc" : "sorted-desc"
+        );
+
+        applyFilters();
+      });
+    });
 
     document.getElementById("regionFilter").addEventListener("change", applyFilters);
     document.getElementById("typeFilter").addEventListener("change", applyFilters);
