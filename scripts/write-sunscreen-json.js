@@ -1,5 +1,13 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
+
+// ----------------------------
+// ESM __dirname FIX
+// ----------------------------
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // ----------------------------
 // INPUT (from GitHub Actions)
@@ -30,9 +38,8 @@ try {
 }
 
 // ----------------------------
-// FILE PATH (FIXED)
+// FILE PATH (CORRECT + STABLE)
 // ----------------------------
-// scripts/write-sunscreen-json.js → ../data/sunscreens.json
 
 const DATA_FILE = path.resolve(
   __dirname,
