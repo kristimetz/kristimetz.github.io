@@ -3357,5 +3357,86 @@
     ],
     "source_url": "https://oliveyoung.com/product/detail?prdtNo=GA251034676",
     "notes": "_No response_"
+  },
+  {
+    "id": "etude-soonjung-directors-moisture-sun-cream",
+    "brand": "Etude Soonjung Director's",
+    "product": "Moisture Sun Cream",
+    "type": "chemical",
+    "spf": 50,
+    "pa": "PA++++",
+    "korean": true,
+    "filters": [
+      {
+        "name": "diethylamino hydroxybenzoyl hexyl benzoate",
+        "category": "chemical"
+      },
+      {
+        "name": "ethylhexyl triazone",
+        "category": "chemical"
+      },
+      {
+        "name": "bis-ethylhexyloxyphenol methoxyphenyl triazine",
+        "category": "chemical"
+      },
+      {
+        "name": "terephthalylidene dicamphor sulfonic acid",
+        "category": "chemical"
+      },
+      {
+        "name": "drometrizole trisiloxane",
+        "category": "chemical"
+      }
+    ],
+    "ingredients": [
+      "shell\nWater",
+      "Propanediol",
+      "Butyloctyl Salicylate",
+      "Ethylhexyl Triazone",
+      "Dibutyl Adipate",
+      "Polyglyceryl-3 Distearate",
+      "Niacinamide",
+      "Caprylyl Methicone",
+      "Diisopropyl Sebacate",
+      "Drometrizole Trisiloxane Terephthalylidene Dicamphor Sulfonic Acid",
+      "2,3-Butanediol",
+      "Diethylamino Hydroxybenzoyl Hexyl Benzoate",
+      "Tromethamine",
+      "1,2-Hexanediol",
+      "Pentylene Glycol",
+      "Methyl Methacrylate Crosspolymer",
+      "Cetearyl Alcohol",
+      "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+      "Sodium Polyacryloyldimethyl Taurate",
+      "Glyceryl Stearate",
+      "Potassium Cetyl Phosphate",
+      "Glycerin",
+      "Poly C10-30 Alkyl Acrylate",
+      "Inulin Lauryl Carbamate",
+      "Glyceryl Stearate Citrate",
+      "Ammonium Acryloyldimethyltaurate/VP Copolymer",
+      "Ethylhexylglycerin",
+      "Cocos Nucifera (Coconut) Oil",
+      "Sodium Hyaluronate",
+      "Adenosine",
+      "Quercus Suber Bark Extract",
+      "Xanthan Gum",
+      "Oak Root Extract",
+      "Tocopherol",
+      "Butylene Glycol",
+      "Resveratrol",
+      "Carnosine",
+      "Beta-Sitosterol",
+      "Phytosterols",
+      "Hedera Helix (Ivy) Extract",
+      "Chamomilla Recutita (Matricaria) Extract",
+      "Chrysanthemum Parthenium (Feverfew) Extract",
+      "Glycine",
+      "Arginine",
+      "Glutamic Acid",
+      "Guaiazulene"
+    ],
+    "source_url": "https://oliveyoung.com/product/detail?prdtNo=GA250228496",
+    "notes": "_No response_"
   }
 ]
