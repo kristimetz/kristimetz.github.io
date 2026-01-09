@@ -3438,5 +3438,73 @@
     ],
     "source_url": "https://oliveyoung.com/product/detail?prdtNo=GA250228496",
     "notes": "_No response_"
+  },
+  {
+    "id": "la-roche-posay-anthelios-uvmune-400-invisible-fluid",
+    "brand": "La Roche-Posay",
+    "product": "Anthelios Uvmune 400 Invisible Fluid +",
+    "type": "chemical",
+    "spf": 50,
+    "pa": "_No response_",
+    "korean": false,
+    "filters": [
+      {
+        "name": "diethylamino hydroxybenzoyl hexyl benzoate",
+        "category": "chemical"
+      },
+      {
+        "name": "ethylhexyl triazone",
+        "category": "chemical"
+      },
+      {
+        "name": "bis-ethylhexyloxyphenol methoxyphenyl triazine",
+        "category": "chemical"
+      },
+      {
+        "name": "butyl methoxydibenzoylmethane",
+        "category": "chemical"
+      },
+      {
+        "name": "octisalate",
+        "category": "chemical"
+      },
+      {
+        "name": "terephthalylidene dicamphor sulfonic acid",
+        "category": "chemical"
+      },
+      {
+        "name": "drometrizole trisiloxane",
+        "category": "chemical"
+      }
+    ],
+    "ingredients": [
+      "shell\nAqua/​Water/​Eau",
+      "Alcohol Denat",
+      "Triethyl Citrate",
+      "Diisopropyl Sebacate",
+      "Silica",
+      "Ethylhexyl Salicylate",
+      "Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine",
+      "Ethylhexyl Triazone",
+      "Butyl Methoxydibenzoylmethane",
+      "Glycerin",
+      "Propanediol",
+      "C12-22 Alkyl Acrylate/​Hydroxyethylacrylate Copolymer",
+      "Methoxypropylamino Cyclohexenylidene Ethoxyethylcyanoacetate",
+      "Perlite",
+      "Tocopherol",
+      "Caprylic/​Capric Triglyceride",
+      "Acrylates/​C10-30 Alkyl Acrylate Crosspolymer",
+      "Caprylyl Glycol",
+      "Diethylamino Hydroxybenzoyl Hexyl Benzoate",
+      "Drometrizole Trisiloxane",
+      "Hydroxyethylcellulose",
+      "Terephthalylidene Dicamphor Sulfonic Acid",
+      "Triethanolamine",
+      "Trisodium Ethylenediamine Disuccinate",
+      "Parfum/​Fragrance"
+    ],
+    "source_url": "https://incidecoder.com/products/la-roche-posay-anthelios-uvmune-400-invisible-fluid-spf50",
+    "notes": "_No response_"
   }
 ]
